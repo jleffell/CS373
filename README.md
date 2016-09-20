@@ -1,2 +1,2 @@
 # CS373
-Various coding exercises from Udacity's Robotics and AI Course
+Various coding exercises from Udacity's Artifical Intelligence for Robotics course
