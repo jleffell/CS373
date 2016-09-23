@@ -33,6 +33,7 @@ grid = [[1, 1, 1, 0, 0, 0],
         [1, 1, 1, 0, 1, 1],
         [1, 1, 1, 0, 1, 1]]
 
+
 init = [4, 3, 0] # given in the form [row,col,direction]
                  # direction = 0: up
                  #             1: left
@@ -103,10 +104,9 @@ def optimum_policy2D(grid,init,goal,cost):
                                     change = True
                                     value[theta][x][y]  = v2
                                     actions[theta][x][y] = a
-
     #
     # Follow Optimal Trajectory to Goal
-    # Todo: add check for failure!
+    #
 
     x     = init[0]
     y     = init[1]
@@ -116,16 +116,23 @@ def optimum_policy2D(grid,init,goal,cost):
     
     while driving:
 
-        policy[x][y] = action_name[actions[theta][x][y]]
+        a = actions[theta][x][y]
 
-        theta = (theta + action[actions[theta][x][y]])%len(forward)
+        if a == -1:
+            driving = False
+            print "fail"
+            return "fail"
+
+        policy[x][y] = action_name[a]
+
+        theta = (theta + action[a])%len(forward)
         x     = x + forward[theta][0]
         y     = y + forward[theta][1]
         
         if x == goal[0] and y == goal[1]:
             policy[x][y] = '*'
             driving = False
-            
+
     for i in range(len(grid)):
         print policy[i]
 
