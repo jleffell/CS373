@@ -59,4 +59,14 @@ cost = [2, 1, 20] # cost has 3 values, corresponding to making
 
 def optimum_policy2D(grid,init,goal,cost):
 
-    return policy2D
+    max_val = 999
+
+    # index into value[theta][x][y]
+    value = [[[max_val for row in range(len(grid[0]))] for col in range (len(grid))],
+             [[max_val for row in range(len(grid[0]))] for col in range (len(grid))],
+             [[max_val for row in range(len(grid[0]))] for col in range (len(grid))],
+             [[max_val for row in range(len(grid[0]))] for col in range (len(grid))]]
+
+#    return policy2D
+
+optimum_policy2D(grid,init,goal,cost)
